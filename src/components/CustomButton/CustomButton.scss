@@ -1,0 +1,32 @@
+.custom-button {
+  min-width: 165px;
+  width: 300px;
+  height: 34px;
+  margin-bottom: 14px;
+  background-color: darkorange;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px 0 0 rgb(208, 112, 61);
+  cursor: pointer;
+
+  &:hover {
+    background-color: orange;
+  }
+
+  &.inverted {
+    background-color: white;
+    color: darkorange;
+    border: 1px solid darkorange;
+    box-shadow: none;
+  }
+
+  &.inverted-gray {
+    background-color: white;
+    color: dimgray;
+    border: 1px solid lightgray;
+    box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.3);
+  }
+}

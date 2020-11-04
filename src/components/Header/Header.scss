@@ -52,8 +52,25 @@
         }
 
         &:last-child {
+          position: relative;
           padding-left: 10px;
           border-left: 1px solid black;
+
+          span.item-count {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 0;
+            right: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            background-color: darkorange;
+            border-radius: 50%;
+          }
         }
       }
     }
