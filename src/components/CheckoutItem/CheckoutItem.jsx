@@ -1257,16 +1257,16 @@ const CheckoutItem = ({ size }) => {
     return (
         <div className='checkout-item'>
           <div
-            className='image'
+            className='checkout-item-image'
             style={{
               backgroundImage: `url(${imageUrl})`,
             }}
           />
           <div className='checkout-info'>
-            <h3 className='description'>{description}</h3>
-            <span className='price'>{price}€</span>
-            <p className='color'>Kleur: {color}</p>
-            <p className='size'>Maat: {size}</p>
+            <h3 className='checkout-item-description'>{description}</h3>
+            <span className='checkout-item-price'>{price}€</span>
+            <p className='checkout-item-color'>Kleur: {color}</p>
+            <p className='checkout-item-size'>Maat: {size}</p>
           </div>
         </div>
     );

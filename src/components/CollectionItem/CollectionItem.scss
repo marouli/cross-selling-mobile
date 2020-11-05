@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
 
-  .image {
+  .collection-item-image {
     width: 80%;
     height: 280px;
     background-size: cover;
@@ -22,7 +22,7 @@
     flex-direction: column;
   }
 
-  .name {
+  .collection-item-name {
     padding-bottom: 6px;
     font-family: 'Noto Serif JP', serif;
     font-size: 20px;

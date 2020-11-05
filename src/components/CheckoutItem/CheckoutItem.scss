@@ -6,11 +6,13 @@
   align-items: center;
   margin-bottom: 20px;
 
-  .image {
-    width: 100px;
+  .checkout-item-image {
+    width: 110px;
     height: 60px;
     margin-right: 20px;
     margin-left: 10px;
+    background-size: cover;
+    background-position: bottom;
   }
 
   .checkout-info {
@@ -18,13 +20,13 @@
     flex-direction: column;
   }
 
-  .description {
+  .checkout-item-description {
     padding-bottom: 6px;
     font-family: 'Noto Serif JP', serif;
     font-size: 16px;
   }
 
-  .price {
+  .checkout-item-price {
     font-weight: 600;
     margin-bottom: 10px;
   }
