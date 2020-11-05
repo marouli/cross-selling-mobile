@@ -1,7 +1,6 @@
 .modal {
-  // display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   height: 100%;
@@ -9,14 +8,22 @@
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
 
+  &.show {
+    display: block;
+  }
+
+  &.hide {
+    display: none;
+  }
+
   .modal-content {
     width: 90%;
-    margin: 25% auto;
+    margin: 15% auto;
     padding: 10px;
     background: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     animation-name: modalopen;
-    animation-duration: var(--modal-duration);
+    animation-duration: 0.5s;
 
     .modal-header {
       margin-bottom: 10px;
@@ -36,6 +43,7 @@
       .close {
         color: black;
         font-size: 20px;
+        cursor: pointer;
       }
 
       .close:hover,

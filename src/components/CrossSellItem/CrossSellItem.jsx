@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
+import useCustom from '../../hooks/customHook';
 import CustomButton from '../CustomButton/CustomButton';
 import './CrossSellItem.scss';
 
@@ -8,6 +9,12 @@ const CrossSellItem = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [globalState, setGlobalState] = useCustom();
+
+  const add1Global = () => {
+    const newCounterValue = globalState.counter + 1;
+    setGlobalState({ counter: newCounterValue });
+  };
 
 
   useEffect(() => {
@@ -17,7 +24,6 @@ const CrossSellItem = () => {
       try {
         const { data } = await axios('http://dump.dataplatform.shoes/20201005_frontend_assignment/cross_sell_products_for_362950.json')
         !cancel && setData(data)
-        console.log(data.data.hits)
       } catch (error) {
         setIsError(true)
       } finally {
@@ -61,8 +67,8 @@ const CrossSellItem = () => {
                   } */}
                   <span className='cross-sell-item-price'>{item.attributes.product.attributes.price.available_max_regular_price.amount}€</span>
                 </div>
-                <CustomButton className='custom-button checkout'>
-                  Naar winkelmandje
+                <CustomButton className='custom-button checkout' onClick={add1Global}>
+                  In winkelmandje
                 </CustomButton>
               </li>
             ))}

@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
+import useCustom from '../../hooks/customHook';
 import CustomButton from '../CustomButton/CustomButton';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import './CollectionItem.scss';
 
-const CollectionItem = () => {
+const CollectionItem = (props) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [modalState, setModalState] = useState(false);
+  const [globalState, setGlobalState] = useCustom();
 
+  const add1Global = () => {
+    const newCounterValue = globalState.counter + 1;
+    setGlobalState({ counter: newCounterValue });
+  };
 
   useEffect(() => {
     let cancel = false;
@@ -29,6 +36,9 @@ const CollectionItem = () => {
     return () => { cancel = true }
 
   }, []);
+
+  const showModal = () => setModalState(true);
+  const hideModal = () => setModalState(false);
 
   const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
 
@@ -62,10 +72,10 @@ const CollectionItem = () => {
           <CustomButton className='custom-button inverted'>
             Kies je maat
           </CustomButton>
-          <CustomButton className='custom-button'>
+          <CustomButton className='custom-button' onClick={() => {showModal(); add1Global();}} >
             In winkelmandje
           </CustomButton>
-          <ConfirmationModal />
+          <ConfirmationModal {...data} show={modalState} handleClose={hideModal}/>
         </div>
         )
       } 
