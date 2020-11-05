@@ -7,7 +7,7 @@ import './Header.scss';
 const Header = () => {
   const [globalState, setGlobalState] = useCustom();
   
-
+  // Of course most of the elements of the header would normally be separate components
   return (
     <header className='header'>
       <div className='header-section-left'>
