@@ -17,13 +17,16 @@
   }
 
   .modal-content {
-    width: 90%;
+    width: 92%;
     margin: 15% auto;
     padding: 10px;
     background: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     animation-name: modalopen;
     animation-duration: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .modal-header {
       display: flex;

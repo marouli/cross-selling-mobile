@@ -67,7 +67,7 @@ const CrossSellItem = () => {
                 <div className='cross-sell-item-info'>
                   <h3 className='cross-sell-item-title'>{item.attributes.product.attributes.product_classification}</h3>
                   <span className='cross-sell-item-price'>{item.attributes.product.attributes.price.available_max_regular_price.amount}€</span>
-                  {/* ToDo fix this */}
+                  {/* ToDo fix */}
                   {/* {item.child_products && item.child_products.lenght > 0 ? (
                     <p className='cross-sell-item-instruction'>Kies een optie:</p>
                     ) : null   
