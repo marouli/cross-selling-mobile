@@ -10,14 +10,12 @@ const CrossSellItem = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [globalState, setGlobalState] = useCustom();
-  // const [radioValue, setRadioValue] = useState("");
-  const [selectValue, setSelectValue] = useState('');
+  const [selectValue, setSelectValue] = useState('Kies optie');
 
   const add1Global = () => {
     const newCounterValue = globalState.counter + 1;
     setGlobalState({ counter: newCounterValue });
   };
-
 
   useEffect(() => {
     let cancel = false;
@@ -28,8 +26,9 @@ const CrossSellItem = () => {
         !cancel && setData(data)
         data.data.hits.map(async item => {
           const itemData = await axios(`http://dump.dataplatform.shoes/20201005_frontend_assignment/prod_details_${item.attributes.product.id}.json`)
-          item['child_products'] = itemData.data.data.attributes.child_products ? itemData.data.data.attributes.child_products : [] 
-          console.log(item['child_products'])
+          item['child_products'] = itemData.data.data.attributes.child_products ? itemData.data.data.attributes.child_products : []
+
+          console.log(item.child_products)
           }
         )
       } catch (error) {
@@ -46,11 +45,6 @@ const CrossSellItem = () => {
 
   const handleChange = (event) => {
     setSelectValue(event.target.value);
-  }
-
-  const handleSubmit = (event) => {
-    alert(`You chose: ${selectValue}`);
-    event.preventDefault();
   }
 
   const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
@@ -78,35 +72,14 @@ const CrossSellItem = () => {
                 <div className='cross-sell-item-info'>
                   <h3 className='cross-sell-item-title'>{item.attributes.product.attributes.product_classification}</h3>
                   <span className='cross-sell-item-price'>{item.attributes.product.attributes.price.available_max_regular_price.amount}€</span>
-                  {/* ToDo fix */}
-                  {/* {item.child_products && item.child_products.lenght > 0 ? (
-                    <p className='cross-sell-item-instruction'>Kies een optie:</p>
-                    ) : null   
-                  }    */}
                   {item.child_products && item.child_products.length > 0 ? 
-                    <div className='cross-sell-item-form-container'>
-                      <form onSubmit={handleSubmit}>
-                        <label>
-                          Kies een optie
-                          <select value={selectValue} onChange={handleChange}>
-                            {item.child_products.map(data => (
-                            <option value={data.attributes[0].value}>{data.attributes[0].value}</option> 
-                            ))};
-                          </select>
-                        </label>
-                        <input type="submit" value="Submit" />
-                      </form>
-                      {/* <form className='cross-sell-item-form'>  
-                        <input
-                          className='cross-sell-item-option'
-                          type="radio"
-                          name="dynamic-radio"
-                          value={data.attributes[0].value}
-                          checked={radioValue === data.attributes[0].value}
-                          onChange={(e) => setRadioValue(e.target.value)}
-                        />
-                        <label key={data.id} className='cross-sell-item-child'>{data.attributes[0].value}</label> 
-                      </form> */}
+                    <div className='cross-sell-item-container'>
+                      <select className='cross-sell-item-select' value={selectValue} onChange={handleChange}>
+                        <option value="Kies optie">Kies optie</option> 
+                        {item.child_products.map(data => (
+                          <option key={data.attributes[0].value.id} value={data.attributes[0].value}>{data.attributes[0].value}</option> 
+                        ))};
+                      </select>
                     </div>
                    : null
                   }

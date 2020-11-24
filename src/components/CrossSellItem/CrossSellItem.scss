@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .cross-sell-items__containter {
   width: 100%;
+  margin-top: 8px;
   margin-bottom: 10px;
   padding: 0 10px;
+  display: flex;
+  flex-direction: column;
 
   .cross-sell-items-description {
     color: gray;
@@ -9,16 +14,16 @@
   }
 
   .cross-sell-items__list {
+    height: 220px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-flow: row;
     grid-gap: 7px;
     justify-content: center;
 
     .cross-sell-item {
-      width: 100px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       align-items: center;
     }
 
@@ -41,28 +46,37 @@
 
       .cross-sell-item-price {
         font-size: 14px;
+        margin-bottom: 6px;
       }
 
-      .cross-sell-item-instruction {
-        margin-bottom: 0;
-        font-size: smaller;
-        color: gray;
+      .cross-sell-item-container {
+        position: relative;
+        width: 100%;
       }
 
-      .cross-sell-item-form {
-        width: 90px;
-        height: 16px;
-        padding: 0;
+      .cross-sell-item-container::after {
+        content: '\f078';
+        font: normal 13px FontAwesome;
+        color: darkgray;
+        right: 8px;
+        top: 6px;
+        height: 12px;
+        // padding-left: 9px;
+        position: absolute;
+        pointer-events: none;
       }
 
-      input {
-        width: 12px;
-        // height: 20px;
-      }
-
-      .cross-sell-item-child {
+      .cross-sell-item-select {
+        width: 85px;
+        border: 1px solid lightgrey;
+        border-radius: 2px;
         font-size: 12px;
-        padding-left: 3px;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
       }
     }
   }
